@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C++复健 | 秃头的君寻酱</title><meta name="author" content="秃头的君寻酱"><meta name="copyright" content="秃头的君寻酱"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一直在copy代码，遂从头学习C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++复健">
+<meta property="og:url" content="https://xun-cmd.github.io/2025/10/02/C++%E5%A4%8D%E5%BB%BA/index.html">
+<meta property="og:site_name" content="秃头的君寻酱">
+<meta property="og:description" content="一直在copy代码，遂从头学习C++">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/Xun-cmd/picgo_picture/blob/main/img/xxxholic/20251001224531387.png?raw=true">
+<meta property="article:published_time" content="2025-10-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-02T13:04:44.266Z">
+<meta property="article:author" content="秃头的君寻酱">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="入门">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/Xun-cmd/picgo_picture/blob/main/img/xxxholic/20251001224531387.png?raw=true"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "C++复健",
+  "url": "https://xun-cmd.github.io/2025/10/02/C++%E5%A4%8D%E5%BB%BA/",
+  "image": "https://github.com/Xun-cmd/picgo_picture/blob/main/img/xxxholic/20251001224531387.png?raw=true",
+  "datePublished": "2025-10-01T16:00:00.000Z",
+  "dateModified": "2025-10-02T13:04:44.266Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "秃头的君寻酱",
+      "url": "https://xun-cmd.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/junxun.jpg"><link rel="canonical" href="https://xun-cmd.github.io/2025/10/02/C++%E5%A4%8D%E5%BB%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+          
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++复健',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20231226/1%202560x1440_f2f500ff77934961ad01503b440bc9be.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/junxun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://github.com/Xun-cmd/picgo_picture/blob/main/img/xxxholic/20251001224427288.png?raw=true);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">秃头的君寻酱</span></a><a class="nav-page-title" href="/"><span class="site-name">C++复健</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">C++复健</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-01T16:00:00.000Z" title="发表于 2025-10-02 00:00:00">2025-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-02T13:04:44.266Z" title="更新于 2025-10-02 21:04:44">2025-10-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-%E5%AD%A6%E4%B9%A0/">C++学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>都是一些零散的知识，梦到哪里记到哪。。。</p>
+<h2 id="1-最大公约数算法原理"><a href="#1-最大公约数算法原理" class="headerlink" title="1.最大公约数算法原理"></a>1.最大公约数算法原理</h2><ul>
+<li>首先，老师上课讲过，但是好像并没有听懂，今天重刷洛谷时候感觉对这方面不是很熟。<br>这个方法来自欧几里得的<strong>辗转相除法</strong>。代码实现如下：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gcd</span>(a,b)&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>辗转相除法：</strong></p>
+<ul>
+<li><p>实际上，这是高等代数讲过的问题，就是最大公约数和最大公约数的区别。先回忆一下高代中的知识。</p>
+</li>
+<li><p><strong>定理：</strong><br>在多项式环 $P[x]$ 中，任意两个多项式 $f(x)$ 和 $g(x)$ 都存在最大公因式。<br>而且，$f(x)$ 和 $g(x)$ 的任意一个最大公因式 $d(x)$ 都可以表示为 $f(x)$ 和 $g(x)$ 的线性组合，即存在 $u(x), v(x) \in P[x]$，使得：</p>
+</li>
+</ul>
+<p>$$<br>d(x) &#x3D; u(x)f(x) + v(x)g(x)<br>$$</p>
+<ul>
+<li>证明如下图所示：<br><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/1c140b292d0c0102e68b3200619ed0da.jpg?raw=true" alt="1.jpg"><br>由上述定理，我们可以知道f(x),g(x)的最大公因式一定存在，接下来我们看用辗转相除法的原理证明（题外话,,这成高代笔记了。。）：<br><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/gaodai2.jpg?raw=true" alt="2.jpg"><br>小红书大佬的辗转相除法证明：<br><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/zhanzhuan.jpg?raw=true" alt="3.jpg"><br>那我们回过头看，令 a%b&#x3D;r，这段代码的含义就是如果 b 不等于0，函数就返回 gcd(b,r)，直到b&#x3D;0，此时的a就是图二中的 r<sub>s</sub>(x).</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gcd</span>(a,b)&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-同余原理"><a href="#2-同余原理" class="headerlink" title="2.同余原理"></a>2.同余原理</h2><p><strong>定义：</strong>  </p>
+<ul>
+<li>如果两个整数 $a$ 和 $b$，以及一个正整数 $m$，满足 $a \equiv b \pmod{m}$，则称 $a$ 与 $b$ 在模 $m$ 意义下同余。<br>也就是说，$a$ 和 $b$ 除以 $m$ 后余数相同，或者 $m$ 能整除 $a-b$。<br><strong>举例：</strong><br>$17 \equiv 5 \pmod{12}$，因为 $17 - 5 &#x3D; 12$ 能被 $12$ 整除。<br>相当于：$a-b&#x3D;km$，或者$a&#x3D;b+km$.</li>
+</ul>
+<p><strong>性质：</strong></p>
+<ul>
+<li>同余关系具有传递性、对称性和自反性。（离散数学）</li>
+<li>如果 $a \equiv b \pmod{m}$，则 $a + c \equiv b + c \pmod{m}$，$a \cdot c \equiv b \cdot c \pmod{m}$。</li>
+</ul>
+<p><strong>应用：</strong></p>
+<ul>
+<li>常用于简化大数运算，比如快速判断某个数能否被整除。</li>
+<li>在密码学、算法竞赛、程序设计等领域广泛应用。</li>
+</ul>
+<p><strong>例题：</strong></p>
+<ul>
+<li><p>2003年5月9日是星期五，问第 $2^{2003}$ 天是星期几？<br><strong>解题思路：</strong></p>
+<p>一周有 7 天，星期几每 7 天循环一次，所以只需计算 $2^{2003}$ 除以 7 的余数。</p>
+<p><strong>计算 $2^{2003} \bmod 7$：</strong></p>
+<p>注意到 $2^3 \equiv 1 \pmod{7}$，所以 $2^{2003} &#x3D; 2^{3 \times 667 + 2} &#x3D; (2^3)^{667} \times 2^2 \equiv 1^{667} \times 4 \equiv 4 \pmod{7}$。</p>
+<p><strong>推算星期几：</strong></p>
+<p>第 1 天是星期五，第 $2^{2003}$ 天是星期五后的第 4 天：</p>
+<ul>
+<li>星期五 + 1 天 &#x3D; 星期六</li>
+<li>星期五 + 2 天 &#x3D; 星期日</li>
+<li>星期五 + 3 天 &#x3D; 星期一</li>
+<li>星期五 + 4 天 &#x3D; 星期二</li>
+</ul>
+<p><strong>答：第 $2^{2003}$ 天是星期二。</strong></p>
+</li>
+</ul>
+<p><strong>编程题目：</strong></p>
+<p> <img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/lianxi.png?raw=true" alt="lianxi.png"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, n;</span><br><span class="line">    cin &gt;&gt; x &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> days = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> currentDay = (x + i - <span class="number">1</span>) % <span class="number">7</span> + <span class="number">1</span>; </span><br><span class="line">        <span class="keyword">if</span> (currentDay != <span class="number">6</span> &amp;&amp; currentDay != <span class="number">7</span>) &#123;</span><br><span class="line">            days += <span class="number">250</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; days &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上述代码为题解，其中，关键点是天数的确定</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> currentDay = (x + i - <span class="number">1</span>) % <span class="number">7</span> + <span class="number">1</span>; </span><br></pre></td></tr></table></figure>
+<ul>
+<li>关键就在于这行代码，这里通过对 7 取模（% 7），实现了星期的循环计算。因为一周有 7 天，星期几每 7 天循环一次，所以用模运算可以得到当前是星期几，这正是同余原理在实际编程中的应用。现在我们来仔细解读这段代码<ul>
+<li>x+i-1：<br> x 是起始星期几，比如星期五就是 5。<br>i 是循环变量，表示第几天（第 0 天、第 1 天……）。<br>x + i - 1 这样写是为了让第 0 天就是起始星期几，第 1 天是起始星期几的下一天，以此类推。</li>
+<li>如果没有 -1，比如 currentDay &#x3D; (x + i) % 7 + 1，那么当 i &#x3D; 0 时，结果是 x + 0，也就是第 1 天是星期 x+1，这样会错位一天。</li>
+<li>+1：因为 % 7 得到的是 0-6，而星期几通常用 1-7 表示，所以最后加 1，把结果变成 1-7。</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://xun-cmd.github.io">秃头的君寻酱</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://xun-cmd.github.io/2025/10/02/C++%E5%A4%8D%E5%BB%BA/">https://xun-cmd.github.io/2025/10/02/C++%E5%A4%8D%E5%BB%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://xun-cmd.github.io" target="_blank">秃头的君寻酱</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a><a class="post-meta__tags" href="/tags/%E5%85%A5%E9%97%A8/">入门</a><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a></div><div class="post-share"><div class="social-share" data-image="https://github.com/Xun-cmd/picgo_picture/blob/main/img/xxxholic/20251001224531387.png?raw=true" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/09/24/%E9%93%BE%E8%A1%A8%E5%AD%A6%E4%B9%A0/" title="链表的学习"><img class="cover" src="/img/list/anon.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">链表的学习</div></div><div class="info-2"><div class="info-item-1">数据结构的学习开始——链表（1）</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/09/24/%E9%93%BE%E8%A1%A8%E5%AD%A6%E4%B9%A0/" title="链表的学习"><img class="cover" src="/img/list/anon.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-24</div><div class="info-item-2">链表的学习</div></div><div class="info-2"><div class="info-item-1">数据结构的学习开始——链表（1）</div></div></div></a><a class="pagination-related" href="/2025/07/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%9E%E8%B7%B5%E5%AD%A6%E4%B9%A0/" title="计算机实践学习(第一周)"><img class="cover" src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%9E%E8%B7%B5%E5%B0%81%E9%9D%A2.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-07</div><div class="info-item-2">计算机实践学习(第一周)</div></div><div class="info-2"><div class="info-item-1">小学期第一周计算机实践学习————TDD的学习</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/junxun.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">秃头的君寻酱</div><div class="author-info-description">计算机学习、日常碎片</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Xun-cmd"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Xun-cmd" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:syyrjx0401@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://m.bilibili.com/space/414858541" target="_blank" title="bilibili"><i class="fa-brands fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到君寻酱的博客(●ˇ∀ˇ●)</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">1.最大公约数算法原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%90%8C%E4%BD%99%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2.同余原理</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/02/C++%E5%A4%8D%E5%BB%BA/" title="C++复健"><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/xxxholic/20251001224531387.png?raw=true" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++复健"/></a><div class="content"><a class="title" href="/2025/10/02/C++%E5%A4%8D%E5%BB%BA/" title="C++复健">C++复健</a><time datetime="2025-10-01T16:00:00.000Z" title="发表于 2025-10-02 00:00:00">2025-10-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/24/%E9%93%BE%E8%A1%A8%E5%AD%A6%E4%B9%A0/" title="链表的学习"><img src="/img/list/anon.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="链表的学习"/></a><div class="content"><a class="title" href="/2025/09/24/%E9%93%BE%E8%A1%A8%E5%AD%A6%E4%B9%A0/" title="链表的学习">链表的学习</a><time datetime="2025-09-23T16:00:00.000Z" title="发表于 2025-09-24 00:00:00">2025-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%9E%E8%B7%B5%E5%AD%A6%E4%B9%A0/" title="计算机实践学习(第一周)"><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%9E%E8%B7%B5%E5%B0%81%E9%9D%A2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机实践学习(第一周)"/></a><div class="content"><a class="title" href="/2025/07/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%9E%E8%B7%B5%E5%AD%A6%E4%B9%A0/" title="计算机实践学习(第一周)">计算机实践学习(第一周)</a><time datetime="2025-07-06T16:00:00.000Z" title="发表于 2025-07-07 00:00:00">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/20/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" title="自我介绍"><img src="https://gamecms-res.sl916.com/official_website_resource/50001/4/PICTURE/20230823/60%202560x1440_5ff42a3a9a78467099869a209b11c419.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自我介绍"/></a><div class="content"><a class="title" href="/2025/02/20/%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/" title="自我介绍">自我介绍</a><time datetime="2025-02-20T11:01:23.000Z" title="发表于 2025-02-20 19:01:23">2025-02-20</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By 秃头的君寻酱</div><div class="footer_custom_text">很高兴认识你</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

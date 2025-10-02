@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>C++复健</title>
+      <link href="/2025/10/02/C++%E5%A4%8D%E5%BB%BA/"/>
+      <url>/2025/10/02/C++%E5%A4%8D%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>都是一些零散的知识，梦到哪里记到哪。。。</p><h2 id="1-最大公约数算法原理"><a href="#1-最大公约数算法原理" class="headerlink" title="1.最大公约数算法原理"></a>1.最大公约数算法原理</h2><ul><li>首先，老师上课讲过，但是好像并没有听懂，今天重刷洛谷时候感觉对这方面不是很熟。<br>这个方法来自欧几里得的<strong>辗转相除法</strong>。代码实现如下：</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gcd</span>(a,b)&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>辗转相除法：</strong></p><ul><li><p>实际上，这是高等代数讲过的问题，就是最大公约数和最大公约数的区别。先回忆一下高代中的知识。</p></li><li><p><strong>定理：</strong><br>在多项式环 $P[x]$ 中，任意两个多项式 $f(x)$ 和 $g(x)$ 都存在最大公因式。<br>而且，$f(x)$ 和 $g(x)$ 的任意一个最大公因式 $d(x)$ 都可以表示为 $f(x)$ 和 $g(x)$ 的线性组合，即存在 $u(x), v(x) \in P[x]$，使得：</p></li></ul><p>$$<br>d(x) &#x3D; u(x)f(x) + v(x)g(x)<br>$$</p><ul><li>证明如下图所示：<br><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/1c140b292d0c0102e68b3200619ed0da.jpg?raw=true" alt="1.jpg"><br>由上述定理，我们可以知道f(x),g(x)的最大公因式一定存在，接下来我们看用辗转相除法的原理证明（题外话,,这成高代笔记了。。）：<br><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/gaodai2.jpg?raw=true" alt="2.jpg"><br>小红书大佬的辗转相除法证明：<br><img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/zhanzhuan.jpg?raw=true" alt="3.jpg"><br>那我们回过头看，令 a%b&#x3D;r，这段代码的含义就是如果 b 不等于0，函数就返回 gcd(b,r)，直到b&#x3D;0，此时的a就是图二中的 r<sub>s</sub>(x).</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">gcd</span>(a,b)&#123;</span><br><span class="line">    <span class="keyword">return</span> b == <span class="number">0</span> ? a : <span class="built_in">gcd</span>(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="2-同余原理"><a href="#2-同余原理" class="headerlink" title="2.同余原理"></a>2.同余原理</h2><p><strong>定义：</strong>  </p><ul><li>如果两个整数 $a$ 和 $b$，以及一个正整数 $m$，满足 $a \equiv b \pmod{m}$，则称 $a$ 与 $b$ 在模 $m$ 意义下同余。<br>也就是说，$a$ 和 $b$ 除以 $m$ 后余数相同，或者 $m$ 能整除 $a-b$。<br><strong>举例：</strong><br>$17 \equiv 5 \pmod{12}$，因为 $17 - 5 &#x3D; 12$ 能被 $12$ 整除。<br>相当于：$a-b&#x3D;km$，或者$a&#x3D;b+km$.</li></ul><p><strong>性质：</strong></p><ul><li>同余关系具有传递性、对称性和自反性。（离散数学）</li><li>如果 $a \equiv b \pmod{m}$，则 $a + c \equiv b + c \pmod{m}$，$a \cdot c \equiv b \cdot c \pmod{m}$。</li></ul><p><strong>应用：</strong></p><ul><li>常用于简化大数运算，比如快速判断某个数能否被整除。</li><li>在密码学、算法竞赛、程序设计等领域广泛应用。</li></ul><p><strong>例题：</strong></p><ul><li><p>2003年5月9日是星期五，问第 $2^{2003}$ 天是星期几？<br><strong>解题思路：</strong></p><p>一周有 7 天，星期几每 7 天循环一次，所以只需计算 $2^{2003}$ 除以 7 的余数。</p><p><strong>计算 $2^{2003} \bmod 7$：</strong></p><p>注意到 $2^3 \equiv 1 \pmod{7}$，所以 $2^{2003} &#x3D; 2^{3 \times 667 + 2} &#x3D; (2^3)^{667} \times 2^2 \equiv 1^{667} \times 4 \equiv 4 \pmod{7}$。</p><p><strong>推算星期几：</strong></p><p>第 1 天是星期五，第 $2^{2003}$ 天是星期五后的第 4 天：</p><ul><li>星期五 + 1 天 &#x3D; 星期六</li><li>星期五 + 2 天 &#x3D; 星期日</li><li>星期五 + 3 天 &#x3D; 星期一</li><li>星期五 + 4 天 &#x3D; 星期二</li></ul><p><strong>答：第 $2^{2003}$ 天是星期二。</strong></p></li></ul><p><strong>编程题目：</strong></p><p> <img src="https://github.com/Xun-cmd/picgo_picture/blob/main/img/C++%E5%A4%8D%E5%81%A5/lianxi.png?raw=true" alt="lianxi.png"></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x, n;</span><br><span class="line">    cin &gt;&gt; x &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> days = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="type">int</span> currentDay = (x + i - <span class="number">1</span>) % <span class="number">7</span> + <span class="number">1</span>; </span><br><span class="line">        <span class="keyword">if</span> (currentDay != <span class="number">6</span> &amp;&amp; currentDay != <span class="number">7</span>) &#123;</span><br><span class="line">            days += <span class="number">250</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; days &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>上述代码为题解，其中，关键点是天数的确定</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> currentDay = (x + i - <span class="number">1</span>) % <span class="number">7</span> + <span class="number">1</span>; </span><br></pre></td></tr></table></figure><ul><li>关键就在于这行代码，这里通过对 7 取模（% 7），实现了星期的循环计算。因为一周有 7 天，星期几每 7 天循环一次，所以用模运算可以得到当前是星期几，这正是同余原理在实际编程中的应用。现在我们来仔细解读这段代码<ul><li>x+i-1：<br> x 是起始星期几，比如星期五就是 5。<br>i 是循环变量，表示第几天（第 0 天、第 1 天……）。<br>x + i - 1 这样写是为了让第 0 天就是起始星期几，第 1 天是起始星期几的下一天，以此类推。</li><li>如果没有 -1，比如 currentDay &#x3D; (x + i) % 7 + 1，那么当 i &#x3D; 0 时，结果是 x + 0，也就是第 1 天是星期 x+1，这样会错位一天。</li><li>+1：因为 % 7 得到的是 0-6，而星期几通常用 1-7 表示，所以最后加 1，把结果变成 1-7。</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 编程 </tag>
+            
+            <tag> 入门 </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>链表的学习</title>
       <link href="/2025/09/24/%E9%93%BE%E8%A1%A8%E5%AD%A6%E4%B9%A0/"/>
       <url>/2025/09/24/%E9%93%BE%E8%A1%A8%E5%AD%A6%E4%B9%A0/</url>
